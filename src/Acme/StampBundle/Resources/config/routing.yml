@@ -1,0 +1,6 @@
+acme_stamp_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeStampBundle:Default:index }
+AcmeStampBundle_test:                                                                                                                                                            
+        resource: "@AcmeStampBundle/Resources/config/routing/test.yml"                                                                                                               
+        prefix:   /test

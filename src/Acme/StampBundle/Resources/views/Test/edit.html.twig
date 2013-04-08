@@ -1,0 +1,27 @@
+{% extends 'AcmeStampBundle:Loguj:baza.html.twig' %}
+
+{% block tresc -%}
+    <h1>Test &ndash; edycja</h1>
+
+    <form action="{{ path('test_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        {{ form_widget(edit_form) }}
+        <p>
+            <button class="btn btn-primary" type="submit">Uaktualnij</button>
+        </p>
+    </form>
+
+        
+    
+        <form action="{{ path('test_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <div class="btn-group">
+                <a class="btn" href="{{ path('test') }}">
+                    <i class="icon-chevron-left"></i> Powróć do listy
+                </a>
+                                <button class="btn btn-danger " type="submit"><i class="icon-white icon-remove"></i> Usuń</button>
+            </div>
+        </form>
+    
+{% endblock %}

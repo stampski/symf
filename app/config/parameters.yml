@@ -1,0 +1,14 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 192.96.219.129
+    database_port: 3306
+    database_name: stampsymfony
+    database_user: stamp
+    database_password: '512955208'
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: dd93727629950fd3aaaaa57eeb4af5166fac05b3
+    database_path: null

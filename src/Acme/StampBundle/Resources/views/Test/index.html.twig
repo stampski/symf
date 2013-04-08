@@ -1,0 +1,45 @@
+{% extends 'AcmeStampBundle:Loguj:baza.html.twig' %}
+
+{% block tresc -%}
+    <h1>Test &ndash; lista</h1>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Imie</th>
+                <th>Data</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('test_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.imie }}</td>
+                <td>{% if entity.data %}{{ entity.data|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+               <div class="btn btn-primary dropdown">
+                        <div class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            Akcje
+                            <b class="caret"></b>
+                        </div>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a href="{{ path('test_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('test_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <a class="btn btn-large btn-block btn-success" href="{{ path('test_new') }}">
+        <i class="icon-white icon-plus-sign"></i> Dodaj nowy
+    </a>
+    {% endblock %}

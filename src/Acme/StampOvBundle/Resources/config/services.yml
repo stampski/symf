@@ -1,0 +1,7 @@
+parameters:
+#    acme_stamp_ov.example.class: Acme\StampOvBundle\Example
+
+services:
+#    acme_stamp_ov.example:
+#        class: %acme_stamp_ov.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

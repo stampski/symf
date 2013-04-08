@@ -1,0 +1,16 @@
+Acme\StampBundle\Entity\Test:
+    type: entity
+    table: null
+    repositoryClass: Acme\StampBundle\Entity\TestRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        imie:
+            type: string
+            length: 255
+        data:
+            type: datetime
+    lifecycleCallbacks: {  }

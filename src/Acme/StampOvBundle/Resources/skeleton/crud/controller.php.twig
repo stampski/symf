@@ -1,0 +1,105 @@
+<?php
+
+namespace {{ namespace }}\Controller{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
+
+{% if 'new' in actions or 'edit' in actions or 'delete' in actions %}
+use Symfony\Component\HttpFoundation\Request;
+{%- endif %}
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+{% if 'annotation' == format -%}
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+{%- endif %}
+
+use {{ namespace }}\Entity\{{ entity }};
+{% if 'new' in actions or 'edit' in actions %}
+use {{ namespace }}\Form\{{ entity }}Type;
+{% endif %}
+
+/**
+ * {{ entity }} controller.
+ *
+{% if 'annotation' == format %}
+ * @Route("/{{ route_prefix }}")
+{% endif %}
+ */
+class {{ entity_class }}Controller extends Controller
+{
+
+    {%- if 'index' in actions %}
+        {%- include 'actions/index.php.twig' %}
+    {%- endif %}
+
+    {%- if 'new' in actions %}
+        {%- include 'actions/create.php.twig' %}
+        {%- include 'actions/new.php.twig' %}
+    {%- endif %}
+
+    {%- if 'show' in actions %}
+        {%- include 'actions/show.php.twig' %}
+    {%- endif %}
+
+    {%- if 'edit' in actions %}
+        {%- include 'actions/edit.php.twig' %}
+        {%- include 'actions/update.php.twig' %}
+    {%- endif %}
+
+    {%- if 'delete' in actions %}
+        {%- include 'actions/delete.php.twig' %}
+    {%- endif %}
+
+
+    /**
+     * Tworzy tablicę komunikatów
+     * 
+     * @param Request $req - obiekt Request
+     * @param array $tabela - OPCJA - już istniejąca tabela alertów
+     */
+
+    private function komunikaty($req, $tabela = false) {
+        $wynik = array();
+        $op = $req->query->get('o');
+
+        if($tabela && is_array($tabela)) $wynik = $tabela;
+
+
+        if(strlen($op) > 0) {
+            switch($op) {
+                case "dodok":
+                $t['typ'] = "alert alert-success";
+                $t['tresc'] = "Pomyślnie dodano wpis.";
+                $wynik[] = $t;
+                break;
+
+                case "dodnokpola":
+                $t['typ'] = "alert alert-error";
+                $t['tresc'] = "Błąd! Proszę poprawić pola formularza.";
+                $wynik[] = $t;
+                break;
+
+                case "usunok":
+                $t['typ'] = "alert alert-success";
+                $t['tresc'] = "Pomyślnie usunięto wpis.";
+                $wynik[] = $t;
+                break;
+
+                case "updok":
+                $t['typ'] = "alert alert-success";
+                $t['tresc'] = "Pomyślnie zaktualizowano wpis";
+                $wynik[] = $t;
+                break;
+
+                case "upnokpola":
+                $t['typ'] = "alert alert-error";
+                $t['tresc'] = "Błąd! Proszę poprawić pola formularza.";
+                $wynik[] = $t;
+                break;
+            }
+        }
+
+        return $wynik;
+    }
+
+}

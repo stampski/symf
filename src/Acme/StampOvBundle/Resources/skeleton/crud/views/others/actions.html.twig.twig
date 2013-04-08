@@ -1,0 +1,18 @@
+
+               <div class="btn btn-primary dropdown">
+                        <div class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            Akcje
+                            <b class="caret"></b>
+                        </div>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+
+                {%- for action in record_actions %}
+
+                    <li>
+                        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_" ~ action ~ "', { 'id': entity.id }) }}" }}">{{ action }}</a>
+                    </li>
+
+                {%- endfor %}
+
+                </ul>
+            </div>
