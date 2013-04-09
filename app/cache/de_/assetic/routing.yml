@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /var/lib/stickshift/516128664382ec80f8000693/app-root/data/459869/s/app/config/routing_dev.yml
