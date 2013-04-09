@@ -22,7 +22,11 @@ class AppKernel extends Kernel
             new Acme\StampBundle\AcmeStampBundle(),
             new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Acme\StampOvBundle\AcmeStampOvBundle(),
-             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\CacheBundle\SonataCacheBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\jQueryBundle\SonatajQueryBundle(),
+            # new Sonata\AdminBundle\SonataAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
